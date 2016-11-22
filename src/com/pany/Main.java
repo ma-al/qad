@@ -3,7 +3,9 @@ package com.pany;
 
 import java.util.Arrays;
 import java.util.ArrayList;
-
+import java.util.Hashtable;
+import java.util.Random;
+import java.lang.*;
 /*
 You are given an array of numbers:
 [4,6,7,8,9,1,1,2,0,3,4,0,4,5,8,7,9]
@@ -30,6 +32,54 @@ public class Main {
         // create hashes of all permutations of sub
         // store in a hashtable?
 
+
+
+
+
+        Random r = new Random();
+        System.out.println();
+
+        Hashtable<String, ArrayList<Integer>> ht = new Hashtable<>();
+
+        String s = "";
+
+        for (int i = 0; i < 100; i++) {
+            s = "";
+            ArrayList<Integer> tmp = new ArrayList<Integer>(sub);
+            ArrayList<Integer> arr = new ArrayList<Integer>();
+
+            while(!tmp.isEmpty())
+            {
+                System.out.println();
+
+                int tmpSize = tmp.toArray().length;
+                System.out.print("Size=" + tmpSize + ",");
+
+                int idx = Math.abs(r.nextInt(tmpSize));
+                System.out.print("idx=" + idx + ",");
+
+                int val = tmp.remove(idx);
+                System.out.print(val);
+
+                arr.add(val);
+                s += String.valueOf(val);
+            }
+
+            System.out.println();
+            System.out.println(s);
+
+            ht.put(s, arr);
+        }
+
+        System.out.println("------");
+        for (ArrayList<Integer> ali :ht.values()) {
+            for (Integer i : ali) {
+                System.out.print(i);
+            }
+            System.out.println();
+        }
+
+
         /*
         walk thru big looking for the hashes.
         example
@@ -38,7 +88,6 @@ public class Main {
         - check hashtable for that hash
         - repeat (next one should be "6,7,8")
          */
-
 
 
     }
