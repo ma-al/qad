@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Random;
 import java.lang.*;
+
 /*
 You are given an array of numbers:
 [4,6,7,8,9,1,1,2,0,3,4,0,4,5,8,7,9]
@@ -16,17 +17,42 @@ Then you're given a smaller series of numbers
 */
 public class Main {
 
+    public static void space()
+    {
+        System.out.println();
+    }
+
+    public static void log(String s, int i)
+    {
+        System.out.println(s + " " + i);
+    }
+
+    public static void log(String s)
+    {
+        System.out.println(s);
+    }
+
+    public static void line(String s)
+    {
+        System.out.print(s);
+    }
+
+    public static void line(int i)
+    {
+        System.out.print(i);
+    }
 
     public static void showPerms(ArrayList<Integer> big, ArrayList<Integer> sub)
     {
-        System.out.println("quack quack quack");
+        log("quack quack quack");
+
         for (Integer i: big) {
-            System.out.print(i + ",");
+            line(i + ",");
         }
 
         System.out.println();
         for (Integer i: sub) {
-            System.out.print(i + ",");
+            line(i + ",");
         }
 
         // create hashes of all permutations of sub
@@ -37,36 +63,35 @@ public class Main {
 
 
         Random r = new Random();
-        System.out.println();
+        space();
 
         Hashtable<String, ArrayList<Integer>> ht = new Hashtable<>();
 
-        String s = "";
-
-        for (int i = 0; i < 100; i++) {
-            s = "";
+        for (int i = 0; i < 100; i++)
+        {
+            String s = "";
             ArrayList<Integer> tmp = new ArrayList<Integer>(sub);
             ArrayList<Integer> arr = new ArrayList<Integer>();
 
             while(!tmp.isEmpty())
             {
-                System.out.println();
+                space();
 
                 int tmpSize = tmp.toArray().length;
-                System.out.print("Size=" + tmpSize + ",");
+                line("Size=" + tmpSize + ",");
 
                 int idx = Math.abs(r.nextInt(tmpSize));
-                System.out.print("idx=" + idx + ",");
+                line("idx=" + idx + ",");
 
                 int val = tmp.remove(idx);
-                System.out.print(val);
+                line(val);
 
                 arr.add(val);
                 s += String.valueOf(val);
             }
 
-            System.out.println();
-            System.out.println(s);
+            space();
+            log(s);
 
             ht.put(s, arr);
         }
@@ -74,9 +99,9 @@ public class Main {
         System.out.println("------");
         for (ArrayList<Integer> ali :ht.values()) {
             for (Integer i : ali) {
-                System.out.print(i);
+                line(i);
             }
-            System.out.println();
+            space();
         }
 
 
@@ -89,6 +114,48 @@ public class Main {
         - repeat (next one should be "6,7,8")
          */
 
+        log("------");
+        int maxBig = big.toArray().length;
+        int maxSub = sub.toArray().length;
+
+        log("maxBig", maxBig);
+        log("maxSub", maxSub);
+
+        ArrayList<Integer> tmp = new ArrayList<Integer>(big);
+        ArrayList<String> result = new ArrayList<>();
+
+        while(!tmp.isEmpty())
+        {
+            if(tmp.toArray().length < maxSub)
+            {
+                break;
+            }
+
+            ArrayList<Integer> ali = new ArrayList<>(tmp.subList(0, maxSub));
+
+            space();
+            String s = "";
+            for (Integer i: ali) {
+                s += String.valueOf(i);
+            }
+            line(s);
+
+            if(ht.containsKey(s))
+            {
+                result.add(s);
+            }
+
+            tmp.remove(0);
+        }
+
+        space();
+        space();
+
+        log("Found:");
+        for (String s : result)
+        {
+            log(" - " + s);
+        }
 
     }
 
