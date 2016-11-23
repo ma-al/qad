@@ -1,6 +1,9 @@
 Brief
 =====
-Attempted on 2016-11-22
+Attempted on 2016-11-22. Idea was to come up with a quick and dirty solution to the
+problem stated below. Had to commit and push my solution to GitHub in one hour.
+
+See post-mortem below.
 
 
 Problem
@@ -19,12 +22,6 @@ Find all *sequential* permutations of the smaller set on the larger set.
 
 So, using the above arrays, the function needs to return [7,8,9] and [8,7,9]
 
-
-Start
-=====
-After *this* commit goes up, I have one hour to:
- - do a quick and dirty solution
- - commit and push to GitHub
 
 
 Post-Mortem
