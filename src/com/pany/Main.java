@@ -42,10 +42,11 @@ public class Main {
         System.out.print(i);
     }
 
-    public static void showPerms(ArrayList<Integer> big, ArrayList<Integer> sub)
+    public static void showPermutations(ArrayList<Integer> big, ArrayList<Integer> sub)
     {
         log("quack quack quack");
 
+        // Print out arrays for visual check
         for (Integer i: big) {
             line(i + ",");
         }
@@ -55,24 +56,38 @@ public class Main {
             line(i + ",");
         }
 
-        // create hashes of all permutations of sub
-        // store in a hashtable?
-
-
-
-
+        /*
+        Basic idea below is to:
+        - create hashes of all the permutations of the sub-array
+        - store in a hash-table as sorf of a quick lookup-table
+        */
 
         Random r = new Random();
         space();
 
+        // The lookup table we will populate
         Hashtable<String, ArrayList<Integer>> ht = new Hashtable<>();
 
+        /*
+        Quick and dirty. Just brute force to get all permutations.
+        100 times for a 3 element array should be enough
+        */
+
+        // TODO: make this more efficient
         for (int i = 0; i < 100; i++)
         {
             String s = "";
             ArrayList<Integer> tmp = new ArrayList<Integer>(sub);
             ArrayList<Integer> arr = new ArrayList<Integer>();
 
+            /*
+            1. randomly choose an element in the array
+            2. removing it from array
+            3. append it to the temp array
+
+            Once nothing left in the array, there's your randomly re-ordered
+            copy of the array
+            */
             while(!tmp.isEmpty())
             {
                 space();
@@ -96,6 +111,7 @@ public class Main {
             ht.put(s, arr);
         }
 
+        // Print out lookup table to check
         System.out.println("------");
         for (ArrayList<Integer> ali :ht.values()) {
             for (Integer i : ali) {
@@ -106,12 +122,14 @@ public class Main {
 
 
         /*
-        walk thru big looking for the hashes.
-        example
-        - get "4,6,7"
-        - hash it
-        - check hashtable for that hash
-        - repeat (next one should be "6,7,8")
+        walk thru the big array, extract sub-array and compare with
+        the lookup table from above.
+
+        Example, from the input big array:
+         - get "4,6,7"
+         - hash it
+         - check lookup table for that hash
+         - repeat (next one should be "6,7,8")
          */
 
         log("------");
@@ -126,6 +144,7 @@ public class Main {
 
         while(!tmp.isEmpty())
         {
+            // exit when we're nearing the end
             if(tmp.toArray().length < maxSub)
             {
                 break;
@@ -134,17 +153,20 @@ public class Main {
             ArrayList<Integer> ali = new ArrayList<>(tmp.subList(0, maxSub));
 
             space();
+
+            // This is clumsy. We're iterating thru and copying out to the string.
             String s = "";
-            for (Integer i: ali) {
+            for (Integer i: ali)
+            {
                 s += String.valueOf(i);
             }
             line(s);
 
+            // if there is a hit on the lookup, add to results
             if(ht.containsKey(s))
             {
                 result.add(s);
             }
-
             tmp.remove(0);
         }
 
@@ -160,7 +182,8 @@ public class Main {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
 
         Integer[] arrBig = {4,6,7,8,9,1,1,2,0,3,4,0,4,5,8,7,9};
         ArrayList<Integer> big = new ArrayList<Integer>(Arrays.asList(arrBig));
@@ -168,7 +191,6 @@ public class Main {
         Integer[] arrSub = {8,9,7};
         ArrayList<Integer> sub = new ArrayList<Integer>(Arrays.asList(arrSub));
 
-        showPerms(big, sub);
-
+        showPermutations(big, sub);
     }
 }
