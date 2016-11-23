@@ -1,11 +1,14 @@
 package com.pany;
 
 
+
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Random;
 import java.lang.*;
+
+import static com.pany.util.Out.*;
 
 /*
 You are given an array of numbers:
@@ -17,44 +20,11 @@ Then you're given a smaller series of numbers
 */
 public class Main {
 
-    public static void space()
-    {
-        System.out.println();
-    }
-
-    public static void log(String s, int i)
-    {
-        System.out.println(s + " " + i);
-    }
-
-    public static void log(String s)
-    {
-        System.out.println(s);
-    }
-
-    public static void line(String s)
-    {
-        System.out.print(s);
-    }
-
-    public static void line(int i)
-    {
-        System.out.print(i);
-    }
-
     public static void showPermutations(ArrayList<Integer> big, ArrayList<Integer> sub)
     {
-        log("quack quack quack");
-
         // Print out arrays for visual check
-        for (Integer i: big) {
-            line(i + ",");
-        }
-
-        System.out.println();
-        for (Integer i: sub) {
-            line(i + ",");
-        }
+        log(big.toString());
+        log(sub.toString());
 
         /*
         Basic idea below is to:
@@ -93,13 +63,13 @@ public class Main {
                 space();
 
                 int tmpSize = tmp.toArray().length;
-                line("Size=" + tmpSize + ",");
+                lsl("Size=" + tmpSize + ",");
 
                 int idx = Math.abs(r.nextInt(tmpSize));
-                line("idx=" + idx + ",");
+                lsl("idx=" + idx + ",");
 
                 int val = tmp.remove(idx);
-                line(val);
+                lsl(val);
 
                 arr.add(val);
                 s += String.valueOf(val);
@@ -112,10 +82,10 @@ public class Main {
         }
 
         // Print out lookup table to check
-        System.out.println("------");
+        section();
         for (ArrayList<Integer> ali :ht.values()) {
             for (Integer i : ali) {
-                line(i);
+                lsl(i);
             }
             space();
         }
@@ -129,10 +99,10 @@ public class Main {
          - get "4,6,7"
          - hash it
          - check lookup table for that hash
-         - repeat (next one should be "6,7,8")
+         - repeat (next One should be "6,7,8")
          */
 
-        log("------");
+        section();
         int maxBig = big.toArray().length;
         int maxSub = sub.toArray().length;
 
@@ -160,7 +130,7 @@ public class Main {
             {
                 s += String.valueOf(i);
             }
-            line(s);
+            lsl(s);
 
             // if there is a hit on the lookup, add to results
             if(ht.containsKey(s))
@@ -170,13 +140,10 @@ public class Main {
             tmp.remove(0);
         }
 
-        space();
-        space();
-
-        log("Found:");
+        section("Found");
         for (String s : result)
         {
-            log(" - " + s);
+            bul(s);
         }
 
     }
