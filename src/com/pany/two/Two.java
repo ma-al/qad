@@ -33,26 +33,30 @@ public class Two extends Runner
                          ArrayList<Integer> left,
                          ArrayList<Integer> right)
     {
+        section("" + right.toArray().length);
+        log("Bef = " + left.toString() + " | " + right.toString());
+
         if(right.isEmpty())
         {
+            log("RESULT += " + left.toString());
             result.add(left.toString());
             return;
         }
 
-        section();
-        log("left : " + left.toString());
-        log("right: " + right.toString());
-
         for (int idx = 0; idx < right.toArray().length ; idx++)
         {
-            Integer xfer = right.remove(idx);
-            left.add(xfer);
+            left.add(right.remove(idx));
+            lsl("Aft = ");
+            lsl(left.toString());
+            lsl(" | ");
+            lsl(right.toString());
+            lsl(", foridx=");
+            lsl(idx);
 
             recurse(result,
                     new ArrayList<Integer>(left),
                     new ArrayList<Integer>(right));
         }
-
     }
 
     @Override
