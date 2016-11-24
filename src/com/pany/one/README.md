@@ -28,7 +28,7 @@ Post-Mortem
 ===========
 Did it but took 1.5 hours (overshot by 30 mins)
 
-1. `Tue Nov 22 22:07:08 2016 +1100`, [started](https://github.com/ma-al/quickie-code/commit/4fb34f986c0e22c0e69799afcfdb767871aacd9b)
-2. `Tue Nov 22 23:06:10 2016 +1100`, [time-up](https://github.com/ma-al/quickie-code/commit/5017b0f14db310ccc395e955260a2a1183835ae0)
-3. `Tue Nov 22 23:37:37 2016 +1100`, [stopped](https://github.com/ma-al/quickie-code/commit/0b825e950305da14d1703792d5a00afd17833125)
+1. `Tue Nov 22 22:07:08 2016 +1100`, [started](https://github.com/ma-al/qad-java/commit/4fb34f986c0e22c0e69799afcfdb767871aacd9b)
+2. `Tue Nov 22 23:06:10 2016 +1100`, [time-up](https://github.com/ma-al/qad-java/commit/5017b0f14db310ccc395e955260a2a1183835ae0)
+3. `Tue Nov 22 23:37:37 2016 +1100`, [stopped](https://github.com/ma-al/qad-java/commit/0b825e950305da14d1703792d5a00afd17833125)
 

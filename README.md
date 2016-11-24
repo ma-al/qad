@@ -11,4 +11,9 @@ Tasks
 =====
 Each attempt is split into it's own package and class in the `src/com/pany/` folder.
 
-1. Array permutations. Tried on 2016-11-22. [Report](https://github.com/ma-al/qad-java/blob/master/src/com/pany/one/README.md)
+1. Find permutations in larger array
+  - Tried on 2016-11-22
+  - [Report](https://github.com/ma-al/qad-java/blob/master/src/com/pany/one/README.md)
+2. Accurate permutations
+  - Tried on 2016-11-24.
+  - [Report](https://github.com/ma-al/qad-java/blob/master/src/com/pany/two/README.md)
