@@ -26,5 +26,5 @@ Find all permutations of that sequence of numbers. For above, there should be:
 
 Post-Mortem
 ===========
-Coming soon...
+STARTING NOW!
 
