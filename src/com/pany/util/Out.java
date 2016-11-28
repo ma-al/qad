@@ -40,11 +40,20 @@ public class Out
     {
         lsl(String.valueOf(o));
     }
+    public static void lsl(int i)
+    {
+        lsl(String.valueOf(i));
+    }
 
     public static void log(String s)
     {
         System.out.println(s);
     }
+    public static void log(int i)
+    {
+        log(String.valueOf(i));
+    }
+
 
     public static void log(String s, Object o)
     {
