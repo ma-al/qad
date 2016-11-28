@@ -22,6 +22,23 @@ public class Three extends Runner
             {'o','o','x','o','x','e'},
             {'x','x','e','e','e','e'}};
 
+    public void checker(ArrayList<Character> ac)
+    {
+        lsl(ac.toString());
+
+        if(ac.toString().compareTo("[o, o, o, o]") == 0 ||
+           ac.toString().compareTo("[x, x, x, x]") == 0 )
+        {
+            lsl("(!)");
+        }
+        else
+        {
+            lsl("( )");
+        }
+
+        lsl(" | ");
+    }
+
     @Override
     public void run()
     {
@@ -71,25 +88,10 @@ public class Three extends Runner
 
                 boolean east = false, north = false, south = false, west = false;
 
-                if(maxX >= x && maxX <= 6)
-                {
-                    east = true;
-                }
-
-                if(maxY >= y && maxY <= 5)
-                {
-                    north = true;
-                }
-
-                if(minX >= 0)
-                {
-                    west = true;
-                }
-
-                if(minY >= 0)
-                {
-                    south = true;
-                }
+                if(maxX <= 6) east = true;
+                if(maxY <= 5) north = true;
+                if(minX >= 0) west = true;
+                if(minY >= 0) south = true;
 
                 if(north)
                 {
@@ -100,17 +102,7 @@ public class Three extends Runner
                         lsl(String.format("(%d,%d)", x, ny));
                         ac.add(board[x][ny]);
                     }
-                    lsl(ac.toString());
-                    if(ac.toString().compareTo("[o, o, o, o]") == 0 ||
-                       ac.toString().compareTo("[x, x, x, x]") == 0 )
-                    {
-                        lsl("(!)");
-                    }
-                    else
-                    {
-                        lsl("( )");
-                    }
-                    lsl(" | ");
+                    checker(ac);
                 }
 
                 if(east)
@@ -122,17 +114,7 @@ public class Three extends Runner
                         lsl(String.format("(%d,%d)", nx, y));
                         ac.add(board[nx][y]);
                     }
-                    lsl(ac.toString());
-                    if(ac.toString().compareTo("[o, o, o, o]") == 0 ||
-                            ac.toString().compareTo("[x, x, x, x]") == 0 )
-                    {
-                        lsl("(!)");
-                    }
-                    else
-                    {
-                        lsl("( )");
-                    }
-                    lsl(" | ");
+                    checker(ac);
                 }
 
                 if(south)
@@ -144,17 +126,7 @@ public class Three extends Runner
                         lsl(String.format("(%d,%d)", x, ny));
                         ac.add(board[x][ny]);
                     }
-                    lsl(ac.toString());
-                    if(ac.toString().compareTo("[o, o, o, o]") == 0 ||
-                            ac.toString().compareTo("[x, x, x, x]") == 0 )
-                    {
-                        lsl("(!)");
-                    }
-                    else
-                    {
-                        lsl("( )");
-                    }
-                    lsl(" | ");
+                    checker(ac);
                 }
 
                 if(west)
@@ -166,17 +138,7 @@ public class Three extends Runner
                         lsl(String.format("(%d,%d)", nx, y));
                         ac.add(board[nx][y]);
                     }
-                    lsl(ac.toString());
-                    if(ac.toString().compareTo("[o, o, o, o]") == 0 ||
-                            ac.toString().compareTo("[x, x, x, x]") == 0 )
-                    {
-                        lsl("(!)");
-                    }
-                    else
-                    {
-                        lsl("( )");
-                    }
-                    lsl(" | ");
+                    checker(ac);
                 }
 
                 if(north && west)
@@ -195,19 +157,64 @@ public class Three extends Runner
                         nx--;
                         ny++;
                     }
+                    checker(ac);
+                }
 
+                if(north && east)
+                {
+                    lsl("NoEa");
+                    ArrayList<Character> ac = new ArrayList<>();
 
-                    lsl(ac.toString());
-                    if(ac.toString().compareTo("[o, o, o, o]") == 0 ||
-                            ac.toString().compareTo("[x, x, x, x]") == 0 )
+                    int nx = x;
+                    int ny = y;
+
+                    while(nx <= maxX && ny <= maxY)
                     {
-                        lsl("(!)");
+                        lsl(String.format("(%d,%d)", nx, ny));
+                        ac.add(board[nx][ny]);
+
+                        nx++;
+                        ny++;
                     }
-                    else
+                    checker(ac);
+                }
+
+                if(south && west)
+                {
+                    lsl("SoWe");
+                    ArrayList<Character> ac = new ArrayList<>();
+
+                    int nx = x;
+                    int ny = y;
+
+                    while(nx >= minX && ny >= minY)
                     {
-                        lsl("( )");
+                        lsl(String.format("(%d,%d)", nx, ny));
+                        ac.add(board[nx][ny]);
+
+                        nx--;
+                        ny--;
                     }
-                    lsl(" | ");
+                    checker(ac);
+                }
+
+                if(south && east)
+                {
+                    lsl("SoEa");
+                    ArrayList<Character> ac = new ArrayList<>();
+
+                    int nx = x;
+                    int ny = y;
+
+                    while(nx <= maxX && ny >= minY)
+                    {
+                        lsl(String.format("(%d,%d)", nx, ny));
+                        ac.add(board[nx][ny]);
+
+                        nx++;
+                        ny--;
+                    }
+                    checker(ac);
                 }
 
                 space();
