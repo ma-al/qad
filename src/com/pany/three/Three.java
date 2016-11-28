@@ -35,5 +35,7 @@ public class Three extends Runner
                 log(String.valueOf(c));
             }
         }
+
+        
     }
 }
