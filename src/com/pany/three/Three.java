@@ -41,21 +41,6 @@ public class Three extends Runner
         measure their lengths :D
          */
 
-//                    0,0
-//                    1,0
-//                    2,0
-//                    3,0
-                    /*
-                    0,0
-                    0,1
-                    0,2
-                    0,3
-
-                    0,0
-                    1,1
-                    2,2
-                    3,3
-                     */
 
         for(int x = 0; x < board.length; x++)
         {
@@ -199,13 +184,16 @@ public class Three extends Runner
                     lsl("NoWe");
                     ArrayList<Character> ac = new ArrayList<>();
 
-                    for(int nx = x; nx >= minX; nx --)
+                    int nx = x;
+                    int ny = y;
+
+                    while(nx >= minX && ny <= maxY)
                     {
-                        for(int ny = y; ny <= maxY; ny ++)
-                        {
-                            lsl(String.format("(%d,%d)", nx, ny));
-                            ac.add(board[nx][ny]);
-                        }
+                        lsl(String.format("(%d,%d)", nx, ny));
+                        ac.add(board[nx][ny]);
+
+                        nx--;
+                        ny++;
                     }
 
 
